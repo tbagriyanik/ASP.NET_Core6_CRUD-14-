@@ -1,0 +1,58 @@
+﻿@page
+@model veritabaniCRUD.Pages.siralamaModel
+@{
+    Layout = "_Layout";
+    ViewData["Title"] = "Sıralama";
+}
+
+<h1>Sıralama</h1>
+<div class="alert alert-info fade show" role="alert"> @Model.mesaj </div>
+<div class="row m-2">
+    <div class="col-8">
+        <form method="get" class="form form-group border rounded border-dark text-center p-2">
+            <div class="row">
+                <div class="col-4">
+                    Sıralama alanı<br />
+                    <select name="sirala" size="3">
+                        <option selected value="ID">ID</option>
+                        <option value="isim">İsim</option>
+                        <option value="ucret">Ücret</option>
+                    </select>
+                </div>
+                <div class="col-4">
+                    Sıralama yönü<br />
+                    <select name="yon" size="2">
+                        <option selected value="az">A-Z</option>
+                        <option value="za">Z-A</option>
+                    </select>
+                </div>
+                <div class="col-4 pt-2">
+                    <button class="btn btn-dark" style="white-space: nowrap;">Sırala</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+@if (Model._tablo != null && Model._tablo.Count > 0)
+{
+    <h2>Bulunan Kişiler</h2>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>@Html.DisplayNameFor(model => model._tablo[0].ID)</th>
+                <th>@Html.DisplayNameFor(model => model._tablo[0].isim)</th>
+                <th>@Html.DisplayNameFor(model => model._tablo[0].ucret)</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model._tablo)
+            {
+                <tr>
+                    <td>@Html.DisplayFor(modelItem => item.ID)</td>
+                    <td>@Html.DisplayFor(modelItem => item.isim)</td>
+                    <td>@Html.DisplayFor(modelItem => item.ucret)</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}

@@ -1,0 +1,40 @@
+﻿@page "{handler?}"
+@model veritabaniCRUD.Pages.guncellemeModel
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@{
+    Layout = "_Layout"; ViewData["Title"] = "Güncelleme";
+}
+<h1>Güncelleme</h1>
+<div class="alert alert-info fade show" role="alert"> @Model.mesaj </div>
+<div class="row">
+    <div class="col-8">
+        <form method="get" class="form form-group border rounded border-warning text-center p-2 m-2">
+            <div class="row">
+                <div class="col-6">
+                    Güncellenecek ID<br /><input type="text" name="ID" value="0" maxlength="50" placeholder="sayı giriniz" />
+                </div>
+                <div class="col-6 pt-2">
+                    <input type="submit" class="btn btn-warning" style="white-space: nowrap;" value="Getir" />
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<div class="row">
+    <div class="col-8">
+        <form asp-page-handler="Guncel" method="post" class="form form-group border rounded border-primary text-center p-2 m-2">
+            <div class="row">
+                <div class="col-4">
+                    İsim<br /><input type="text" name="isim" value="@Model.guncelIsim" maxlength="50" placeholder="metin giriniz" />
+                </div>
+                <div class="col-4">
+                    Ücret<br /><input type="text" name="ucret" value="@Model.guncelUcret" maxlength="50" placeholder="sayı giriniz" />
+                </div>
+                <div class="col-4 pt-2">
+                    <input type="hidden" name="ID" value="@Model.guncelID" />
+                    <input type="submit" class="btn btn-primary" style="white-space: nowrap;" value="Kişiyi Güncelle" />
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

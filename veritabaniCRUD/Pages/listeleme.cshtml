@@ -1,0 +1,28 @@
+﻿@page
+@model veritabaniCRUD.Pages.listelemeModel
+@{
+    Layout = "_Layout";
+    ViewData["Title"] = "Listeleme";
+}
+
+<h1>Listeleme</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>@Html.DisplayNameFor(model => model._tablo[0].ID)</th>
+            <th>@Html.DisplayNameFor(model => model._tablo[0].isim)</th>
+            <th>@Html.DisplayNameFor(model => model._tablo[0].ucret)</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model._tablo)
+        {
+            <tr>
+                <td>@Html.DisplayFor(modelItem => item.ID)</td>
+                <td>@Html.DisplayFor(modelItem => item.isim)</td>
+                <td>@Html.DisplayFor(modelItem => item.ucret)</td>
+            </tr>
+        }
+    </tbody>
+</table>
